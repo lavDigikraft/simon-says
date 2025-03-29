@@ -67,6 +67,7 @@ const endGame = () => {
   gameStarted = false;
   scorecard.innerHTML = "";
   scorecard.textContent = `Oops, you lost! Want to try again?`;
+  colorBtns.forEach((btn) => (btn.disabled = true));
   startBtn.disabled = false;
   score = 0;
 };
