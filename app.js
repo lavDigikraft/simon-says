@@ -44,10 +44,6 @@ const clickByHuman = (e) => {
   }
 };
 
-colorBtns.forEach((btn) => {
-  btn.addEventListener("click", clickByHuman);
-});
-
 //Starts game
 const initiateGame = () => {
   if (gameStarted) return;
@@ -56,18 +52,25 @@ const initiateGame = () => {
   gameStarted = true;
   colorBtns.forEach((btn) => (btn.disabled = false));
   startBtn.disabled = true;
+  colorBtns.forEach((btn) => {
+  btn.addEventListener("click", clickByHuman);
+});
+
 
   clickByComputer();
 };
 
 //Ends game
 const endGame = () => {
+  colorBtns.forEach((btn) => {
+    btn.disabled = true;
+    btn.removeEventListener('click', clickByHuman); 
+  });
   computerClicks = [];
   humanClicks = [];
   gameStarted = false;
   scorecard.innerHTML = "";
   scorecard.textContent = `Oops, you lost! Want to try again?`;
-  colorBtns.forEach((btn) => (btn.disabled = true));
   startBtn.disabled = false;
   score = 0;
 };
