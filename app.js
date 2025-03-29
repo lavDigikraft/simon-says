@@ -51,12 +51,11 @@ colorBtns.forEach((btn) => {
 //Starts game
 const initiateGame = () => {
   if (gameStarted) return;
+  scorecard.innerHTML = "";
+  scorecard.textContent = `Score: ${score}`;
   gameStarted = true;
   colorBtns.forEach((btn) => (btn.disabled = false));
   startBtn.disabled = true;
-  score = 0
-  scorecard.innerHTML = "";
-  scorecard.textContent = `Score: ${score}`;
 
   clickByComputer();
 };
@@ -69,5 +68,6 @@ const endGame = () => {
   scorecard.innerHTML = "";
   scorecard.textContent = `Oops, you lost! Want to try again?`;
   startBtn.disabled = false;
+  score = 0;
 };
 startBtn.addEventListener("click", initiateGame);
