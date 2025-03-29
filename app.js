@@ -54,6 +54,9 @@ const initiateGame = () => {
   gameStarted = true;
   colorBtns.forEach((btn) => (btn.disabled = false));
   startBtn.disabled = true;
+  score = 0
+  scorecard.innerHTML = "";
+  scorecard.textContent = `Score: ${score}`;
 
   clickByComputer();
 };
